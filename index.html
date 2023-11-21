@@ -4,7 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding in the dark</title>
-    <link rel="stylesheet" data-href="dynamic-stylesheet" type="text/css" />
+    <link rel="stylesheet/less" type="text/css"  data-href="dynamic-stylesheet">
+    <script>
+      /*
+        This is some custom configuration. Please, leave it here.
+      */
+      // This will renew the cached css file in browser
+      const link = document.querySelector("link[data-href='dynamic-stylesheet']");
+      link.href = `style.scss?version=${Date.now()}`;
+      
+      // This will reload the whole page to see the changes
+      setTimeout(function(){
+          window.location.reload();
+      }, 10000);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/less@4.1.1"></script>
   </head>
   <body>
     <div class="container">
@@ -13,17 +27,4 @@
       </div>
     </div>
   </body>
-
-  <script>
-    /*
-      This is some custom configuration. Please, leave it here.
-    */
-    // This will renew the cached css file in browser
-    const link = document.querySelector("link[data-href='dynamic-stylesheet']");
-    link.href = `style.css?version=${Math.random()}`;
-    // This will reload the whole page to see the changes
-    setTimeout(function () {
-      window.location.reload();
-    }, 10000);
-  </script>
 </html>
